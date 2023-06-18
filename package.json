@@ -63,15 +63,8 @@
     "lunr": "^2.3.9",
     "photoswipe": "^5.3.7",
     "photoswipe-dynamic-caption-plugin": "^1.2.7",
-<<<<<<< HEAD
-    "swiper": "^9.1.0"
-  },
-  "engines": {
-    "node": ">=14 <15"
-  }
-=======
     "swiper": "^9.4.1"
   },
-  "packageManager": "pnpm@8.5.1"
->>>>>>> 102a1f047e7c8208451aedb1c667fe209c1189a0
-}
+  "packageManager": "pnpm@8.5.1"}
+
+
