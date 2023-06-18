@@ -10,7 +10,7 @@ export interface TagType {
 }
 
 export const SiteMetadata = {
-  title: 'Hello Astro',
+  title: 'شركة دراهم للوساطة و التجارة الالكترونية',
   description: 'An Astro starter for corporate/marketing/blog websites.',
   author: {
     name: 'Chris Tham',
@@ -33,12 +33,12 @@ export const SiteMetadata = {
   social: [
     {
       name: 'Email',
-      link: 'mailto:info@hellothamcom',
+      link: 'mailto:info@darahem.ly',
       icon: 'envelope',
     },
     {
       name: 'Phone',
-      link: '555-5555',
+      link: '091-6656699',
       icon: 'telephone',
     },
     {
@@ -48,7 +48,7 @@ export const SiteMetadata = {
     },
     {
       name: 'Facebook',
-      link: 'https://www.facebook.com/hellothamcom',
+      link: 'https://www.facebook.com/profile.php?id=100088916312958',
       icon: 'facebook',
     },
     {
@@ -72,16 +72,22 @@ export const SiteMetadata = {
 
 export const Logo = '../images/svg/astro/logomark-light.svg'
 export const LogoImage = '../images/astro/full-logo-light.png'
-export const FeaturedSVG = '../images/svg/undraw/undraw_design_inspiration.svg'
+export const FeaturedSVG = '../images/svg/darahem/darahem.jpg'
 export const DefaultSVG = '../images/svg/undraw/undraw_my_feed.svg'
 export const DefaultImage = '../images/undraw/undraw_my_feed.png'
 
 export const NavigationLinks = [
-  { name: 'Home', href: '' },
-  { name: 'About', href: 'about' },
-  { name: 'Contact', href: 'contact' },
-  { name: 'Blog', href: 'blog' },
-  { name: 'Docs', href: 'doc/introduction' },
+  { name: 'الصفحة الرئيسية', href: '' },
+  { name: 'خدماتنا', href: 'about' },
+  { name: 'تواصل معنا', href: 'contact' },
+  { name: 'لماذا نحن', href: 'blog' },
+  { name: 'طرق الدفع', href: 'doc/introduction' },
+]
+
+export const footerLinks = [
+  { name: 'من نحن', href: '' },
+  { name: 'خدماتنا', href: 'about' },
+  { name: 'اتصل بنا', href: 'contact' },
 ]
 
 export const CategoryDetail = [
@@ -89,13 +95,13 @@ export const CategoryDetail = [
     category: 'instructions',
     coverSVG: '../images/svg/undraw/undraw_instruction_manual.svg',
     socialImage: '../images/undraw/undraw_instruction_manual.png',
-    description: 'Guidelines on using this starter.'
+    description: 'Guidelines on using this starter.',
   },
   {
     category: 'information',
     coverSVG: '../images/svg/undraw/undraw_instant_information.svg',
     socialImage: '../images/undraw/undraw_instant_information.png',
-    description: 'Information articles.'
+    description: 'Information articles.',
   },
 ]
 
@@ -117,15 +123,15 @@ export const AuthorDetail = [
     name: 'Chris Tham',
     description: 'Hello World',
     contact: 'chris@christham.net',
-    image: '../images/authors/Chris Tham.jpg'
-  }
+    image: '../images/authors/Chris Tham.jpg',
+  },
 ]
 
 export const DefaultAuthor = {
   name: 'Hello Astro',
   image: '../images/authors/default.png',
   contact: 'info@hellotham.com',
-  description: 'Astronaut'
+  description: 'Astronaut',
 }
 
 export function authorDetail(author: string | undefined) {
