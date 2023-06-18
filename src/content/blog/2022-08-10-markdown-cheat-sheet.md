@@ -1,16 +1,17 @@
 ---
 title: Markdown Cheat Sheet
 description: A quick reference to the Markdown syntax.
-author: Matt Cone
+author: matt-cone
 publishDate: 2022-08-10T00:00:00.000Z
-coverSVG: ../images/svg/undraw/undraw_design_components.svg
-socialImage: ../images/undraw/undraw_design_components.png
+coverSVG: ../../assets/svg/undraw/undraw_design_components.svg
+socialImage: ../../assets/undraw/undraw_design_components.png
 categories:
   - information
 tags:
   - markdown
   - reference
 ---
+
 ## Introduction
 
 This blog post is adapted from the cheat sheet in [Markdown Guide](https://www.markdownguide.org/cheat-sheet/) written by Matt Cone.
@@ -24,7 +25,9 @@ These are the elements outlined in John Gruber’s original design document. All
 ### Heading
 
 # H1
+
 ## H2
+
 ### H3
 
 ### Bold
@@ -33,7 +36,7 @@ These are the elements outlined in John Gruber’s original design document. All
 
 ### Italic
 
-*italicized text*
+_italicized text_
 
 ### Blockquote
 
@@ -65,7 +68,7 @@ These are the elements outlined in John Gruber’s original design document. All
 
 ### Image
 
-![alt text](https://www.markdownguide.org/assets/images/tux.png)
+![alt text](https://astro.build/assets/press/astro-logo-dark.png)
 
 ## Extended Syntax
 
@@ -73,10 +76,10 @@ These elements extend the basic syntax by adding additional features. Not all Ma
 
 ### Table
 
-| Syntax | Description |
-| ----------- | ----------- |
-| Header | Title |
-| Paragraph | Text |
+| Syntax    | Description |
+| --------- | ----------- |
+| Header    | Title       |
+| Paragraph | Text        |
 
 ### Fenced Code Block
 

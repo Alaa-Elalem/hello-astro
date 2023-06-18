@@ -12,6 +12,7 @@ export interface Props {
 
 const { pages } = Astro.props
 
+<<<<<<< HEAD
 const imagepaths = pages.map(page => page.image)
 const imageFiles = import.meta.glob<ImageMetadata>(
   '../images/gallery/**/*.{png,webp,jpg,jpeg}',
@@ -21,19 +22,33 @@ const folderFiles = Object.keys(imageFiles).filter(image =>
   imagepaths.includes(image)
 )
 const images = folderFiles.map(image => imageFiles[image])
+=======
+const imagepaths = pages.map((page) => page.image)
+const imageFiles = import.meta.glob<ImageMetadata>('../assets/gallery/**/*.{png,webp,jpg,jpeg}', {
+  import: 'default',
+  eager: true
+})
+const folderFiles = Object.keys(imageFiles).filter((image) => imagepaths.includes(image))
+const images = folderFiles.map((image) => imageFiles[image])
+>>>>>>> 102a1f047e7c8208451aedb1c667fe209c1189a0
 ---
 
 <div
   style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff"
+<<<<<<< HEAD
   class:list={[
     'swiper mySwiper not-prose max-w-screen-xl mx-auto rounded-lg w-[100px]',
     `h-[100px]`,
   ]}
 >
+=======
+  class:list={['swiper mySwiper not-prose max-w-screen-xl mx-auto rounded-lg w-full', `h-[500px]`]}>
+>>>>>>> 102a1f047e7c8208451aedb1c667fe209c1189a0
   <div class="swiper-wrapper">
     {
       pages.map((page, i) => (
         <div class="swiper-slide relative">
+<<<<<<< HEAD
           <div class="absolute left-0 bottom-0 w-full h-full z-10 bg-gradient-to-t from-gray-800 opacity-25 xl:rounded-lg" />
           <img
             src={images[i].src}
@@ -45,6 +60,17 @@ const images = folderFiles.map(image => imageFiles[image])
             {page.description && (
               <p class="text-base text-gray-300 italic">{page.description}</p>
             )}
+=======
+          <div class="absolute bottom-0 left-0 z-10 h-full w-full bg-gradient-to-t from-gray-800 opacity-25 xl:rounded-lg" />
+          <img
+            src={images[i].src}
+            alt={page.name}
+            class="absolute left-0 top-0 z-0 m-0 h-full w-full object-cover"
+          />
+          <div class="absolute bottom-0 left-0 z-20 mb-4 ml-8 bg-transparent p-4 text-white">
+            {page.title && <h4 class="text-lg font-bold">{page.title}</h4>}
+            {page.description && <p class="text-base italic text-gray-300">{page.description}</p>}
+>>>>>>> 102a1f047e7c8208451aedb1c667fe209c1189a0
             <slot />
           </div>
         </div>
@@ -64,7 +90,7 @@ const images = folderFiles.map(image => imageFiles[image])
   // import Swiper styles
   import 'swiper/css/bundle'
 
-  var swiper = new Swiper('.mySwiper', {
+  new Swiper('.mySwiper', {
     cssMode: true,
     lazy: true,
     loop: true,
@@ -72,17 +98,17 @@ const images = folderFiles.map(image => imageFiles[image])
     centeredSlides: true,
     autoplay: {
       delay: 5000,
-      disableOnInteraction: false,
+      disableOnInteraction: false
     },
     pagination: {
       el: '.swiper-pagination',
-      clickable: true,
+      clickable: true
     },
     navigation: {
       nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
+      prevEl: '.swiper-button-prev'
     },
     mousewheel: true,
-    keyboard: true,
+    keyboard: true
   })
 </script>

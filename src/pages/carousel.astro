@@ -8,10 +8,13 @@ import Features from '../components/features.astro'
 import FindOutMore from '../components/findoutmore.astro'
 import LatestArticles from '../components/latestarticles.astro'
 import CTA from '../components/cta.astro'
+import coverSVG from '../assets/svg/undraw/undraw_design_inspiration.svg'
+import socialImage from '../assets/undraw/undraw_design_inspiration.png'
 
 const frontmatter: Frontmatter = {
   title: SiteMetadata.title,
   description: SiteMetadata.description,
+<<<<<<< HEAD
   coverSVG: '../images/svg/darahem/darahem.jpg',
   socialImage: '../images/undraw/undraw_design_inspiration.png',
   publishDate: SiteMetadata.buildTime,
@@ -31,17 +34,43 @@ const posts = await getCollection('blog')
 const latestPosts = posts
   .sort((a, b) => +b.data.publishDate - +a.data.publishDate)
   .filter(p => !p.data.draft)
+=======
+  coverSVG: coverSVG,
+  socialImage: socialImage,
+  publishDate: SiteMetadata.buildTime
+}
+
+const carouselPages = [
+  { name: 'Cowarra Dam', image: '../assets/gallery/carousel/Cowarra-Dam.jpeg' },
+  {
+    name: 'Mayfield Garden',
+    image: '../assets/gallery/carousel/Mayfield-Garden.jpeg'
+  },
+  { name: 'Mt Tomah', image: '../assets/gallery/carousel/Mt-Tomah.jpeg' },
+  { name: 'Oberon Dam', image: '../assets/gallery/carousel/Oberon-Dam.jpeg' }
+]
+
+const posts = await getCollection('blog', ({ data }) => {
+  return data.draft !== true
+})
+const latestPosts = posts.sort((a, b) => +b.data.publishDate - +a.data.publishDate)
+>>>>>>> 102a1f047e7c8208451aedb1c667fe209c1189a0
 ---
 
 <Base frontmatter={frontmatter}>
   <Carousel pages={carouselPages}>
     <h1
+<<<<<<< HEAD
       class="text-4xl tracking-tight font-extrabold text-gray-100 sm:text-5xl md:text-6xl text-left"
     >
+=======
+      class="text-left text-4xl font-extrabold tracking-tight text-gray-100 sm:text-5xl md:text-6xl">
+>>>>>>> 102a1f047e7c8208451aedb1c667fe209c1189a0
       <span class="block xl:inline">hello</span>{' '}
       <span class="block text-purple-500 xl:inline">Astro</span>
     </h1>
     <p
+<<<<<<< HEAD
       class="mt-3 text-base text-gray-300 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 lg:mx-0"
     >
       Hello Astro is a full featured corporate/marketing/blog starter theme
@@ -55,11 +84,24 @@ const latestPosts = posts
       It has full SEO support for Facebook (Open Graph) tags, Twitter Cards and
       Schema/JSON-LD metadata. It also features fully auto generated RSS feed
       and sitemap for search engine indexing.
+=======
+      class="mt-3 text-base text-gray-300 sm:mx-auto sm:mt-5 sm:max-w-xl sm:text-lg md:mt-5 lg:mx-0">
+      Hello Astro is a full featured corporate/marketing/blog starter theme written in Typescript,
+      TailwindCSS and Astro. It supports Markdown and MDX based pages and blog posts (including math
+      and diagrams), plus full text search on blog pages.
+    </p>
+    <p
+      class="mt-3 text-base text-gray-300 sm:mx-auto sm:mt-5 sm:max-w-xl sm:text-lg md:mt-5 lg:mx-0">
+      It has full SEO support for Facebook (Open Graph) tags, Twitter Cards and Schema/JSON-LD
+      metadata. It also features fully auto generated RSS feed and sitemap for search engine
+      indexing.
+>>>>>>> 102a1f047e7c8208451aedb1c667fe209c1189a0
     </p>
     <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
       <div class="rounded-md shadow">
         <a
           href="/about"
+<<<<<<< HEAD
           class="w-full flex items-center justify-center px-8 py-2 border border-transparent text-base font-medium rounded-md text-white bg-purple-600 hover:bg-pink-600 dark:text-black dark:bg-purple-300 dark:hover:bg-pink-300 md:py-3 md:text-lg md:px-10"
         >
           About
@@ -72,6 +114,18 @@ const latestPosts = posts
           rel="noopener noreferrer"
           target="_blank"
         >
+=======
+          class="flex w-full items-center justify-center rounded-md border border-transparent bg-purple-600 px-8 py-2 text-base font-medium text-white hover:bg-pink-600 dark:bg-purple-300 dark:text-black dark:hover:bg-pink-300 md:px-10 md:py-3 md:text-lg">
+          About
+        </a>
+      </div>
+      <div class="mt-3 sm:ml-3 sm:mt-0">
+        <a
+          href="https://github.com/sponsors/hellotham"
+          class="flex w-full items-center justify-center rounded-md border border-transparent bg-purple-100 px-8 py-2 text-base font-medium text-purple-800 hover:bg-pink-200 dark:bg-purple-900 dark:text-purple-100 dark:hover:bg-pink-900 md:px-10 md:py-3 md:text-lg"
+          rel="noopener noreferrer"
+          target="_blank">
+>>>>>>> 102a1f047e7c8208451aedb1c667fe209c1189a0
           Sponsor Us
         </a>
       </div>
@@ -81,5 +135,5 @@ const latestPosts = posts
   <FindOutMore />
   <LatestArticles posts={latestPosts} />
   <CTA />
-  <div class="p-24 md:p-12 bg-white dark:bg-black"></div>
+  <div class="bg-white p-24 dark:bg-black md:p-12"></div>
 </Base>

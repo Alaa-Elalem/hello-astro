@@ -8,6 +8,8 @@ import Base from '../../../layouts/base.astro'
 import PageHero from '../../../components/pagehero.astro'
 import BlogRoll from '../../../components/blogroll.astro'
 import PaginateControl from '../../../components/paginatecontrol.astro'
+import coverSVG from '../../../assets/svg/undraw/undraw_add_notes.svg'
+import socialImage from '../../../assets/undraw/undraw_add_notes.png'
 
 export interface Props {
   page: Page<CollectionEntry<'blog'>>
@@ -17,33 +19,35 @@ const { tag } = Astro.params
 const { page } = Astro.props
 
 const frontmatter: Frontmatter = {
-  title: 'Tag: ' + tag + (page.size < page.total ? ' (page ' + page.currentPage + ' of ' + page.lastPage + ')' : ''),
+  title:
+    'Tag: ' +
+    tag +
+    (page.size < page.total ? ' (page ' + page.currentPage + ' of ' + page.lastPage + ')' : ''),
   description:
-    'Showing articles ' +
-    (page.start + 1) +
-    '-' +
-    (page.end + 1) +
-    ' (total ' +
-    page.total +
-    ')',
-  coverSVG: '../images/svg/undraw/undraw_add_notes.svg',
-  socialImage: '../images/undraw/undraw_add_notes.png',
-  publishDate: SiteMetadata.buildTime,
+    'Showing articles ' + (page.start + 1) + '-' + (page.end + 1) + ' (total ' + page.total + ')',
+  coverSVG: coverSVG,
+  socialImage: socialImage,
+  publishDate: SiteMetadata.buildTime
 }
 
 const currentPage = Astro.url.pathname.replace(/(\/\d*)?\/$/, '')
 
 export async function getStaticPaths({ paginate }: { paginate: PaginateFunction }) {
-  const allPosts = await getCollection('blog')
-  const posts = allPosts.sort((a, b) => +b.data.publishDate - +a.data.publishDate).filter(p => !p.data.draft)
+  const allPosts = await getCollection('blog', ({ data }) => {
+    return data.draft !== true
+  })
+  const posts = allPosts.sort((a, b) => +b.data.publishDate - +a.data.publishDate)
 
-  const tags = Array.from(new Set(posts.flatMap(post => post.data.tags)))
+  const tags = Array.from(new Set(posts.flatMap((post) => post.data.tags)))
 
-  return tags.map(tag => {
-    return paginate(posts.filter(post => tag && post.data.tags?.includes(tag)), {
-      params: { tag },
-      pageSize: PAGE_SIZE
-    })
+  return tags.map((tag) => {
+    return paginate(
+      posts.filter((post) => tag && post.data.tags?.includes(tag)),
+      {
+        params: { tag },
+        pageSize: PAGE_SIZE
+      }
+    )
   })
 }
 ---
@@ -54,10 +58,9 @@ export async function getStaticPaths({ paginate }: { paginate: PaginateFunction 
       title={frontmatter.title}
       description={frontmatter.description}
       coverSVG={frontmatter.coverSVG}
-      socialImage={frontmatter.socialImage}
-    >
-    <PaginateControl base={currentPage} page={page} />
-  </PageHero>
+      socialImage={frontmatter.socialImage}>
+      <PaginateControl base={currentPage} page={page} />
+    </PageHero>
   </header>
   <main class="mt-10 bg-gray-100 dark:bg-gray-900">
     <BlogRoll posts={page.data} />

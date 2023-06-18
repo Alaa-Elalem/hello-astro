@@ -8,10 +8,13 @@ import Features from '../components/features.astro'
 import FindOutMore from '../components/findoutmore.astro'
 import LatestArticles from '../components/latestarticles.astro'
 import CTA from '../components/cta.astro'
+import coverSVG from '../assets/svg/undraw/undraw_design_inspiration.svg'
+import socialImage from '../assets/undraw/undraw_design_inspiration.png'
 
 const frontmatter: Frontmatter = {
   title: SiteMetadata.title,
   description: SiteMetadata.description,
+<<<<<<< HEAD
   coverSVG: '../images/svg/darahem/darahem.jpg',
   socialImage: '../images/undraw/undraw_design_inspiration.png',
   publishDate: SiteMetadata.buildTime,
@@ -21,6 +24,17 @@ const posts = await getCollection('blog')
 const latestPosts = posts
   .sort((a, b) => +b.data.publishDate - +a.data.publishDate)
   .filter(p => !p.data.draft)
+=======
+  coverSVG: coverSVG,
+  socialImage: socialImage,
+  publishDate: SiteMetadata.buildTime
+}
+
+const posts = await getCollection('blog', ({ data }) => {
+  return data.draft !== true
+})
+const latestPosts = posts.sort((a, b) => +b.data.publishDate - +a.data.publishDate)
+>>>>>>> 102a1f047e7c8208451aedb1c667fe209c1189a0
 ---
 
 <Base frontmatter={frontmatter}>
@@ -29,5 +43,5 @@ const latestPosts = posts
   <!-- <FindOutMore /> -->
   <!-- <LatestArticles posts={latestPosts} /> -->
   <CTA />
-  <div class="p-24 md:p-12 bg-white dark:bg-black"></div>
+  <div class="bg-white p-24 dark:bg-black md:p-12"></div>
 </Base>

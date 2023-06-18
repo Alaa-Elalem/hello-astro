@@ -17,11 +17,12 @@ const { frontmatter } = Astro.props
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link
-      rel="icon"
-      type="image/x-icon"
-      href={new URL(import.meta.env.BASE_URL + 'favicon.ico', Astro.url)}
-    />
+    <link rel="icon" href={`${Astro.site}favicon.ico`} sizes="any" />
+    <link rel="icon" href={`${Astro.site}favicon.svg`} type="image/svg+xml" />
+    <link rel="apple-touch-icon" href={`${Astro.site}apple-touchicon.png`} />
+    <link rel="manifest" href={`${Astro.site}site.webmanifest`} />
+    <link rel="sitemap" href={`${Astro.site}sitemap-indexxml`} />
+    <link rel="alternate" type="application/rss+xml" title="RSS" href={`${Astro.site}rss.xml`} />
     <meta name="generator" content={Astro.generator} />
     <SEO frontmatter={frontmatter} />
     <script is:inline>
@@ -48,6 +49,7 @@ const { frontmatter } = Astro.props
       </style>
     <style is:inline>
       [x-cloak] { display: none !important; }
+<<<<<<< HEAD
       /* Register your custom font family and tell the browser where to find it. */
 
       </style>
@@ -61,16 +63,31 @@ const { frontmatter } = Astro.props
           height: 400px;
         }
         </style>
+=======
+      .markmap > svg {
+        width: 100%;
+        height: 400px;
+>>>>>>> 102a1f047e7c8208451aedb1c667fe209c1189a0
       }
+      </style>
+    {frontmatter.extra?.includes('math') &&
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css" integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI" crossorigin="anonymous">
+    }
     <slot name="in-head" />
     </head>
     <body class="dark:bg-gray-900">
       {frontmatter.extra?.includes('mermaid') &&
         <script type="module">
+<<<<<<< HEAD
           import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.esm.min.mjs'
           mermaid.initialize({startOnLoad:true});
 
           </script>
+=======
+          import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.esm.min.mjs';
+          mermaid.initialize({startOnLoad: true});
+        </script>
+>>>>>>> 102a1f047e7c8208451aedb1c667fe209c1189a0
       }
       <Header />
       <slot />

@@ -3,13 +3,22 @@ import type { Frontmatter } from '../config'
 import { SiteMetadata } from '../config'
 import Base from '../layouts/base.astro'
 import PageHero from '../components/pagehero.astro'
+import coverSVG from '../assets/svg/undraw/undraw_page_not_found.svg'
+import socialImage from '../assets/undraw/undraw_page_not_found.png'
 
 const frontmatter: Frontmatter = {
   title: '404: Not found',
+<<<<<<< HEAD
   description: 'لقد ادخلت رابط غير صحيح',
   coverSVG: '../images/svg/undraw/undraw_page_not_found.svg',
   socialImage: '../images/undraw/undraw_page_not_found.png',
   publishDate: SiteMetadata.buildTime,
+=======
+  description: "You just hit a route that doesn't exist... the sadness.",
+  coverSVG: coverSVG,
+  socialImage: socialImage,
+  publishDate: SiteMetadata.buildTime
+>>>>>>> 102a1f047e7c8208451aedb1c667fe209c1189a0
 }
 ---
 
